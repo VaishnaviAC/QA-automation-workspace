@@ -12,5 +12,8 @@
   "type": "commonjs",
   "devDependencies": {
     "cypress": "^15.10.0"
+  },
+  "dependencies": {
+    "cypress-real-events": "^1.15.0"
   }
 }

@@ -152,4 +152,18 @@ describe('NeuBodhi Home Page - Desktop Navigation & Contact Form', () => {
       .should('have.attr', 'href')
       .and('include', 'youtube.com')
   })
+    // ============================================
+  // HOME → PROJECTS PAGE
+  // ============================================
+  it('should redirect to Projects page when clicking Projects menu on header', () => {
+
+    cy.contains('Projects')
+      .should('be.visible')
+      .click()
+
+    cy.location('pathname', { timeout: 10000 })
+      .should('eq', '/Projects')
+
+    cy.contains('Our Products').should('be.visible')
+  })
 })

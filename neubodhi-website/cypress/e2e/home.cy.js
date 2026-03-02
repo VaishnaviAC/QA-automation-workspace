@@ -37,7 +37,8 @@ describe('NeuBodhi Home Page - Desktop Navigation & Contact Form', () => {
       .should('be.visible')
       .click()
 
-    cy.url().should('include', '/ContactUs')
+    cy.location('pathname', { timeout: 10000 })
+      .should('eq', '/ContactUs')
   })
 
   // -------------------------

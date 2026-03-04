@@ -12,14 +12,14 @@ describe('NeuBodhi Home Page - Desktop Navigation & Contact Form', () => {
   // -------------------------
   // PAGE LOAD
   // -------------------------
-  it('loads Neubodhi home page', () => {
+  it('Verify that Neubodhi home page loads successfully', () => {
     cy.url().should('eq', 'https://neubodhi.in/')
   })
 
   // -------------------------
   // LEARN MORE BUTTON → ABOUT US
   // -------------------------
-  it('redirects to About Us page when clicking Learn More', () => {
+  it('Verify that the user is redirected to the About Us page when clicking on Learn More.', () => {
     cy.contains('Learn More')
       .scrollIntoView()
       .should('be.visible')
@@ -31,7 +31,7 @@ describe('NeuBodhi Home Page - Desktop Navigation & Contact Form', () => {
   // -------------------------
   // CONNECT NOW BUTTON → CONTACT US
   // -------------------------
-  it('redirects to Contact Us page when clicking Connect Now', () => {
+  it('Verify that the user is redirected to the Contact Us page when clicking on Connect Now.', () => {
     cy.contains('Connect Now')
       .scrollIntoView()
       .should('be.visible')
@@ -44,7 +44,7 @@ describe('NeuBodhi Home Page - Desktop Navigation & Contact Form', () => {
   // -------------------------
   // ISACA PROJECT VIDEO → PROJECT PAGE
   // -------------------------
-  it('redirects to ISACA project page when clicking ISACA video', () => {
+  it('Verify that the user is redirected to the ISACA project page when clicking on the ISACA video.', () => {
     
     // Scroll to ISACA section
     cy.contains('ISACA')
@@ -64,7 +64,7 @@ describe('NeuBodhi Home Page - Desktop Navigation & Contact Form', () => {
   // -------------------------
   // ISACA DETAILS → PROJECT PAGE
   // -------------------------
-  it('redirects to ISACA project details page after clicking ISACA DETAILS', () => {
+  it('Verify that the user is redirected to the ISACA project details page after clicking on ISACA DETAILS.', () => {
     cy.contains('ISACA Details')
       .scrollIntoView()
       .should('be.visible')
@@ -74,18 +74,26 @@ describe('NeuBodhi Home Page - Desktop Navigation & Contact Form', () => {
   })
 
   // -------------------------
-  // POSITIVE TEST
+  // POSITIVE TEST FOR EMAIL VALIDATION
   // -------------------------
-  it('submits contact form with valid data', () => {
-    cy.get('input[placeholder="Your Name *"]').type('Test User')
-    cy.get('input[placeholder="Your Email *"]').type('testuser@gmail.com')
-    cy.get('textarea[placeholder="Enter Message *"]').type('This is a test message')
+  it('Verify that the contact form is submitted successfully with valid data.', () => {
+
+    cy.intercept('POST', '/api/contact').as('contactForm')
+
+    cy.get('input[placeholder="Your Name *"]').type('Rajvi Patel')
+    cy.get('input[placeholder="Your Email *"]').type('rajvi.Patel1234@gmail.com')
+    cy.get('textarea[placeholder="Enter Message *"]').type('I would like to get more information about career opportunities at your organization.')
 
     cy.contains('Lets Connect')
       .should('not.be.disabled')
       .click()
 
-    cy.contains(/thank|success|received/i)
+  // wait for backend response
+    cy.wait('@contactForm')
+
+  // assert success message
+    cy.contains(/Message sent successfully/i, { timeout: 10000 })
+      .should('be.visible')
   })
 
   // -------------------------
@@ -94,25 +102,25 @@ describe('NeuBodhi Home Page - Desktop Navigation & Contact Form', () => {
   /*it('keeps submit button disabled when form is empty', () => {
     cy.contains('Lets Connect').should('be.disabled')
   })*/
-  it('keeps submit button disabled when form is empty', () => {
+  it('Verify that the Lets Connect button remains disabled when the form is empty.', () => {
     cy.contains('Lets Connect').should('be.disabled')
   })
 
-  it('keeps submit button disabled when name is missing', () => {
+  it('Verify that the  Let’s Connect button remains disabled when the name field is missing.', () => {
     cy.get('input[placeholder="Your Email *"]').type('test@gmail.com')
     cy.get('textarea[placeholder="Enter Message *"]').type('Test message')
 
     cy.contains('Lets Connect').should('be.disabled')
   })
 
-  it('keeps submit button disabled when email is missing', () => {
+  it('Verify that the Lets Connect  button remains disabled when the email field is missing.', () => {
     cy.get('input[placeholder="Your Name *"]').type('Test User')
     cy.get('textarea[placeholder="Enter Message *"]').type('Test message')
 
     cy.contains('Lets Connect').should('be.disabled')
   })
 
-  it('keeps submit button disabled when message is missing', () => {
+  it('Verify that the Let’s Connect  button remains disabled when the message field is missing.', () => {
     cy.get('input[placeholder="Your Name *"]').type('Test User')
     cy.get('input[placeholder="Your Email *"]').type('test@gmail.com')
     cy.contains('Lets Connect').should('be.disabled')
@@ -121,22 +129,28 @@ describe('NeuBodhi Home Page - Desktop Navigation & Contact Form', () => {
   // -------------------------
   // NEGATIVE TEST (SUBMIT ENABLED)
   // -------------------------
-  it('shows error for invalid email format', () => {
+  it('Verify that an error message is shown for an invalid email format.', () => {
+
+  // Fill form with invalid email
     cy.get('input[placeholder="Your Name *"]').type('Test User')
     cy.get('input[placeholder="Your Email *"]').type('invalid-email')
     cy.get('textarea[placeholder="Enter Message *"]').type('Test message')
 
+  // Click Lets Connect button
     cy.contains('Lets Connect')
-      .should('not.be.disabled')
+      .should('be.visible')
+      .and('not.be.disabled')
       .click()
 
-    cy.contains(/valid|invalid/i)
+  // Verify error message
+    cy.contains('Please enter a valid email address')
+      .should('be.visible')
   })
 
   // --------------------------------------------------
   // SOCIAL MEDIA ICONS REDIRECT TEST
   // --------------------------------------------------
-  it('Verify LinkedIn link Redirection', () => {
+  it('Verify that the LinkedIn link redirects to the correct LinkedIn page.', () => {
     cy.scrollTo('bottom')
 
     cy.get('a[href="https://www.linkedin.com/company/accurate-industrial-controls-pvt-ltd/"]')
@@ -145,7 +159,7 @@ describe('NeuBodhi Home Page - Desktop Navigation & Contact Form', () => {
       .and('include', 'linkedin.com/company/accurate-industrial-controls-pvt-ltd')
   })
 
-  it('Verify YouTube link Redirection', () => {
+  it('Verify that the YouTube link redirects to the correct YouTube page.', () => {
     cy.scrollTo('bottom')
 
     cy.get('a[href*="youtube.com"]')
@@ -156,7 +170,7 @@ describe('NeuBodhi Home Page - Desktop Navigation & Contact Form', () => {
     // ============================================
   // HOME → PROJECTS PAGE
   // ============================================
-  it('should redirect to Projects page when clicking Projects menu on header', () => {
+  it('Verify that the user is redirected to the Projects page when clicking on the Projects menu in the header.', () => {
 
     cy.contains('Projects')
       .should('be.visible')

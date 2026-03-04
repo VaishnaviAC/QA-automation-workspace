@@ -43,9 +43,9 @@ it('Verify Contact Us page load successfully', () => {
 
     cy.intercept('POST', '**/api/contact').as('contactForm')
 
-    cy.get('input[placeholder="Your Name *"]').type('Test User')
-    cy.get('input[placeholder="Your Email *"]').type('testuser@gmail.com')
-    cy.get('textarea').type('This is a test message')
+    cy.get('input[placeholder="Your Name *"]').type('Ajit Patil')
+    cy.get('input[placeholder="Your Email *"]').type('Ajitpatil@gmail.com')
+    cy.get('textarea').type(' This is a test message from cypress')
 
     cy.contains('Connect')
       .should('not.be.disabled')

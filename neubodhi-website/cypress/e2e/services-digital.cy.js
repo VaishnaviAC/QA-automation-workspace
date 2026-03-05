@@ -7,7 +7,7 @@ describe('Digital Page Navigation & Buttons', () => {
     cy.viewport(1920, 1080)
   })
 
-  // ✅ 1️⃣ Navigate to Digital page from footer
+  // Navigate to Digital page from footer
   it('Verify user can navigate to Digital page from footer', () => {
 
     cy.visit('/')
@@ -23,7 +23,7 @@ describe('Digital Page Navigation & Buttons', () => {
   })
 
 
-  // ✅ 2️⃣ Digital & AI Systems → Connect Us button
+  // Digital & AI Systems → Connect Us button
   it('Verify Digital & AI Systems Connect Us button redirects to Contact page', () => {
 
     cy.visit(digitalPath)
@@ -41,7 +41,7 @@ describe('Digital Page Navigation & Buttons', () => {
   })
 
 
-  // ✅ 3️⃣ Contact page footer → Digital page
+  // Contact page footer → Digital page
   it('Verify footer Digital link redirects back to Digital page', () => {
 
     cy.visit(contactPath)

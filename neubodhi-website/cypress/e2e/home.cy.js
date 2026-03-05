@@ -80,9 +80,9 @@ describe('NeuBodhi Home Page - Desktop Navigation & Contact Form', () => {
 
     cy.intercept('POST', '/api/contact').as('contactForm')
 
-    cy.get('input[placeholder="Your Name *"]').type('Rajvi Patel')
-    cy.get('input[placeholder="Your Email *"]').type('rajvi.Patel1234@gmail.com')
-    cy.get('textarea[placeholder="Enter Message *"]').type('I would like to get more information about career opportunities at your organization.')
+    cy.get('input[placeholder="Your Name *"]').type('Rehansh Patel')
+    cy.get('input[placeholder="Your Email *"]').type('rehansh.Patel1234@gmail.com')
+    cy.get('textarea[placeholder="Enter Message *"]').type('I am interested in exploring potential career opportunities at your organization and would appreciate any information you could share.')
 
     cy.contains('Lets Connect')
       .should('not.be.disabled')
@@ -106,7 +106,7 @@ describe('NeuBodhi Home Page - Desktop Navigation & Contact Form', () => {
     cy.contains('Lets Connect').should('be.disabled')
   })
 
-  it('Verify that the  Let’s Connect button remains disabled when the name field is missing.', () => {
+  it('Verify that the  Lets Connect button remains disabled when the name field is missing.', () => {
     cy.get('input[placeholder="Your Email *"]').type('test@gmail.com')
     cy.get('textarea[placeholder="Enter Message *"]').type('Test message')
 
@@ -120,7 +120,7 @@ describe('NeuBodhi Home Page - Desktop Navigation & Contact Form', () => {
     cy.contains('Lets Connect').should('be.disabled')
   })
 
-  it('Verify that the Let’s Connect  button remains disabled when the message field is missing.', () => {
+  it('Verify that the Lets Connect  button remains disabled when the message field is missing.', () => {
     cy.get('input[placeholder="Your Name *"]').type('Test User')
     cy.get('input[placeholder="Your Email *"]').type('test@gmail.com')
     cy.contains('Lets Connect').should('be.disabled')

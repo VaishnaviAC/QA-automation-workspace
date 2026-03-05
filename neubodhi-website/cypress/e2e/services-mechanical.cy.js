@@ -7,7 +7,7 @@ describe('Mechanical Page Navigation & Buttons', () => {
     cy.viewport(1920, 1080)
   })
 
-  // ✅ 1️⃣ Navigate to Mechanical page from footer
+  // Navigate to Mechanical page from footer
   it('Verify user can navigate to Mechanical page from footer', () => {
 
     cy.visit('/')
@@ -23,7 +23,7 @@ describe('Mechanical Page Navigation & Buttons', () => {
   })
 
 
-  // ✅ 2️⃣ Mechanical Systems & Design → Connect Us
+  // Mechanical Systems & Design → Connect Us
   it('Verify Mechanical Systems & Design Connect Us button redirects to Contact page', () => {
 
     cy.visit(mechanicalPath)
@@ -41,7 +41,7 @@ describe('Mechanical Page Navigation & Buttons', () => {
   })
 
 
-  // ✅ 3️⃣ Contact page footer → Mechanical page
+  // Contact page footer → Mechanical page
   it('Verify footer Mechanical link redirects back to Mechanical page', () => {
 
     cy.visit(contactPath)

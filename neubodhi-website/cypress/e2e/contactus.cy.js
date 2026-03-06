@@ -1,4 +1,4 @@
-describe('NeuBodhi Contact Us Page - Stable Tests', () => {
+describe('NeuBodhi Contact Us Page - End to End Tests', () => {
 
   beforeEach(() => {
     cy.viewport(1366, 768)

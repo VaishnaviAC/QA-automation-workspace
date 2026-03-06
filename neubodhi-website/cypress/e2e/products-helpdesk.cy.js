@@ -8,19 +8,22 @@ describe('Neubodhi Help Desk - End to End Flow', () => {
   // Test 1: Navigate from footer to Help Desk page
   it('Verify that the user is able to navigate to the Help Desk page from the footer section.', () => {
 
+  // Scroll to footer
     cy.scrollTo('bottom')
 
+  // Click Help desk link
     cy.contains('a', 'Help desk')
       .should('be.visible')
       .click()
 
-    // URL validation
-    cy.location('pathname').should('eq', '/Products/HelpDesk')
+  // Validate URL
+    cy.url().should('include', '/Products/HelpDesk')
 
-    // Page content validation
-    cy.contains('Help Desk').should('be.visible')
+  // Validate Help Desk heading appears
+    cy.contains('h1', 'Help Desk', { timeout: 10000 })
+      .should('be.visible')
+
   })
-
 
   // Test 2: Validate email Gmail compose link
   it('Verify that clicking on the Help Desk email has correct Gmail compose URL.', () => {

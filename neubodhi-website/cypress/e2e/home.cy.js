@@ -1,4 +1,4 @@
-describe('NeuBodhi Home Page - Desktop Navigation & Contact Form', () => {
+describe('NeuBodhi Home Page - End to End  Tests - Desktop Navigation & Contact Form', () => {
 
   beforeEach(() => {
     cy.viewport(1366, 768)   // Desktop view
@@ -80,9 +80,9 @@ describe('NeuBodhi Home Page - Desktop Navigation & Contact Form', () => {
 
     cy.intercept('POST', '/api/contact').as('contactForm')
 
-    cy.get('input[placeholder="Your Name *"]').type('Rehansh Patel')
-    cy.get('input[placeholder="Your Email *"]').type('rehansh.Patel1234@gmail.com')
-    cy.get('textarea[placeholder="Enter Message *"]').type('I am interested in exploring potential career opportunities at your organization and would appreciate any information you could share.')
+    cy.get('input[placeholder="Your Name *"]').type('Aarav Mehta')
+    cy.get('input[placeholder="Your Email *"]').type('aarav.mehta89@gmail.com')
+    cy.get('textarea[placeholder="Enter Message *"]').type('Hello, I recently came across your company and I am very interested in learning more about possible job openings. I would be grateful if you could share details about any available opportunities or the application process.')
 
     cy.contains('Lets Connect')
       .should('not.be.disabled')

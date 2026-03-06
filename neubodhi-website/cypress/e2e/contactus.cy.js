@@ -43,9 +43,9 @@ it('Verify Contact Us page load successfully', () => {
 
     cy.intercept('POST', '**/api/contact').as('contactForm')
 
-    cy.get('input[placeholder="Your Name *"]').type('Ajit Patil')
-    cy.get('input[placeholder="Your Email *"]').type('Ajitpatil@gmail.com')
-    cy.get('textarea').type(' This is a test message from cypress')
+    cy.get('input[placeholder="Your Name *"]').type('Priya Sharma')
+    cy.get('input[placeholder="Your Email *"]').type('priya.sharma457@gmail.com')
+    cy.get('textarea').type('Good day, I am reaching out to inquire about potential employment opportunities within your organization. I am eager to contribute my skills and would appreciate any information regarding current or upcoming openings.')
 
     cy.contains('Connect')
       .should('not.be.disabled')

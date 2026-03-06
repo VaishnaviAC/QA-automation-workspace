@@ -8,7 +8,7 @@ describe('NeuBodhi Projects Page Navigation', () => {
   // ============================================
   // PROJECTS PAGE LOAD
   // ============================================
-  it('should load Projects page successfully', () => {
+  it('Verify Projects page loads successfully', () => {
     cy.location('pathname').should('eq', '/Projects')
     cy.contains('Our Products').should('be.visible')
   })
@@ -16,7 +16,7 @@ describe('NeuBodhi Projects Page Navigation', () => {
   // ============================================
   // PROJECTS → ISACA (Click Video/Card)
   // ============================================
-  it('should redirect to ISACA project page when clicking project video', () => {
+  it('Verify redirection to ISACA project page when clicking project video', () => {
     
     cy.contains('ISACA')
       .scrollIntoView()
@@ -33,7 +33,7 @@ describe('NeuBodhi Projects Page Navigation', () => {
   // ============================================
   // PROJECTS → ISACA (Click Learn More if exists)
   // ============================================
-  it('should redirect to ISACA project page when clicking Learn More', () => {
+  it('Verify redirection to ISACA project page when clicking Learn More', () => {
 
     cy.contains(/learn more/i)
       .scrollIntoView()
@@ -42,7 +42,7 @@ describe('NeuBodhi Projects Page Navigation', () => {
     cy.location('pathname', { timeout: 10000 })
       .should('include', '/Projects/ISACA')
   })
-  it('should validate ISACA project page content', () => {
+  it('Verify ISACA project page content', () => {
 
     cy.visit('https://neubodhi.in/Projects/ISACA')
     cy.location('pathname').should('eq', '/Projects/ISACA')
@@ -51,7 +51,7 @@ describe('NeuBodhi Projects Page Navigation', () => {
    // ============================================
   // ISACA → CONNECT NOW → CONTACT US
   // ============================================
-  it('should redirect to Contact Us page when clicking Connect Now button on ISACA Project Page', () => {
+  it('Verify redirection to Contact Us page when clicking Connect Now button on ISACA Project Page', () => {
 
     cy.visit('https://neubodhi.in/Projects/ISACA')
 

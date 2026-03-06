@@ -74,13 +74,13 @@ describe('Neubodhi Careers - End to End Flow', () => {
     // Upload Resume (hidden input)
     cy.get('input[type="file"]')
       .should('exist')
-      .attachFile('resume.pdf', { force: true })
+      .attachFile('resume_doc.docx', { force: true })
 
     // Verify Resume Added UI (green box)
     cy.contains('Resume Added', { timeout: 10000 })
       .should('be.visible')
 
-    cy.contains('.pdf').should('be.visible')
+    cy.contains('.docx').should('be.visible')
 
     // Click Submit Resume
     cy.contains('Submit Resume')

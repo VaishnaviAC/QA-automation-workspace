@@ -39,7 +39,7 @@ it('Verify Contact Us page load successfully', () => {
   // -------------------------
   // VALID FORM SUBMISSION (API VALIDATION)
   // -------------------------
-  it('Verify that contact us form should submit form with valid data', () => {
+  it('Verify that the Contact Us form is submitted successfully when clicking the "Lets Connect" button with valid data.', () => {
 
     cy.intercept('POST', '**/api/contact').as('contactForm')
 
@@ -58,14 +58,14 @@ it('Verify Contact Us page load successfully', () => {
   // -------------------------
   // EMPTY FORM
   // -------------------------
-  it('Verify that the Submit button remains disabled when all fields in the ‘Contact Us’ form are empty.', () => {
+  it('Verify that the Lets Connect (Submit) button remains disabled when all fields in the "Contact Us" form are empty.', () => {
     cy.contains('Connect').should('be.disabled')
   })
 
   // -------------------------
   // MISSING NAME
   // -------------------------
-  it('Verify that the Submit button remains disabled when the Name field is empty.', () => {
+  it('Verify that the Lets Connect (Submit) button remains disabled when the Name field is empty.', () => {
     cy.get('input[placeholder="Your Email *"]').type('test@gmail.com')
     cy.get('textarea').type('Test message')
 
@@ -75,7 +75,7 @@ it('Verify Contact Us page load successfully', () => {
   // -------------------------
   // MISSING EMAIL
   // -------------------------
-  it('Verify that the Submit button remains disabled when the Email field is empty.', () => {
+  it('Verify that the Lets Connect (Submit) button remains disabled when the Email field is empty.', () => {
     cy.get('input[placeholder="Your Name *"]').type('Test User')
     cy.get('textarea').type('Test message')
 
@@ -85,7 +85,7 @@ it('Verify Contact Us page load successfully', () => {
   // -------------------------
   // MISSING MESSAGE
   // -------------------------
-  it('Verify that the Submit button remains disabled when the Message field is empty.', () => {
+  it('Verify that the Lets Connect (Submit) button remains disabled when the Message field is empty.', () => {
     cy.get('input[placeholder="Your Name *"]').type('Test User')
     cy.get('input[placeholder="Your Email *"]').type('test@gmail.com')
 

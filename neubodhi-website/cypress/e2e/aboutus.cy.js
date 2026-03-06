@@ -8,7 +8,7 @@ describe('NeuBodhi - About Us & Contact Navigation Test', () => {
   // =====================================================
   // Test 1 — About Us navigation
   // =====================================================
-  it('Navigate to About Us correctly and scroll down twice', () => {
+  it('Verify that you can navigate to the About Us page successfully and scroll down twice without any issues.', () => {
 
     cy.contains('About Us')
       .should('be.visible')
@@ -30,7 +30,7 @@ describe('NeuBodhi - About Us & Contact Navigation Test', () => {
   // =====================================================
   // Test 2 — Connect Us button → ContactUs page
   // =====================================================
-  it('Connect Us button redirects to Contact Us page', () => {
+  it('Verify that clicking the Connect Us button redirects to the Contact Us page correctly.', () => {
 
     // Wait for page fully rendered
     cy.get('body', { timeout: 10000 }).should('be.visible')

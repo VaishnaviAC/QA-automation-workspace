@@ -24,8 +24,12 @@ describe('NeuBodhi Home Page - End to End  Tests - Desktop Navigation & Contact 
       .scrollIntoView()
       .should('be.visible')
       .click()
+    
+    // wait for few seconds after clicking
+    cy.wait(3000)
 
     cy.url().should('include', '/AboutUs')
+    //cy.url().should('include', '/ContactUs')
   })
 
   // -------------------------

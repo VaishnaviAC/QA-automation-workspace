@@ -1,0 +1,34 @@
+const { defineConfig } = require('cypress')
+
+module.exports = defineConfig({
+  video: true,
+  videoUploadOnPasses: false,   // keep video only for failed tests
+  screenshotOnRunFailure: true, // screenshot only when test fails
+  videosFolder: 'cypress/videos',
+  screenshotsFolder: 'cypress/screenshots',
+  trashAssetsBeforeRuns: true,
+
+  e2e: {
+    baseUrl: 'https://www.neubodhi.in',
+
+    specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
+    supportFile: 'cypress/support/e2e.js',
+
+    retries: {
+      runMode: 1,
+      openMode: 0
+    },
+
+    defaultCommandTimeout: 20000,
+    pageLoadTimeout: 90000,
+    requestTimeout: 20000,
+    responseTimeout: 60000,
+
+    viewportWidth: 1280,
+    viewportHeight: 720,
+
+    setupNodeEvents(on, config) {
+      return config
+    }
+  }
+})
